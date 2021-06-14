@@ -23,13 +23,12 @@ public class SudokuValidator {
             toValid.add(getSubgrid(sudoku, 0, idx, Direction.COLUMN));
         }
 
+        // squares
         for (int idx = 0; idx <= 6; idx+=3) {
             toValid.add(getSubgrid(sudoku, idx, 0, Direction.SQUARE));
             toValid.add(getSubgrid(sudoku, idx, 3, Direction.SQUARE));
             toValid.add(getSubgrid(sudoku, idx, 6, Direction.SQUARE));
         }
-
-        System.out.println(toValid.size() + " blocks to be validated");
 
         for (int[] block : toValid) {
             if (!isValid(block)) {
@@ -65,6 +64,7 @@ public class SudokuValidator {
         int[] subgrid = new int[9];
         switch (direction) {
             case LINE: subgrid = grid[i]; break;
+
             case COLUMN:
                 for (int idx = 0; idx < 9; idx++) {
                     subgrid[idx] = grid[idx][j];
