@@ -2,6 +2,7 @@ package com.lookaiz.kyu6
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
+import kotlin.math.abs
 
 class RainfallTest {
     //......................................................
@@ -67,10 +68,10 @@ class RainfallTest {
         var towns = arrayOf<String>("Rome", "London", "Paris", "NY", "Vancouver", "Sydney", "Bangkok", "Tokyo", "Beijing", "Lima", "Montevideo", "Caracas", "Madrid", "Berlin")
 
         private fun assertFuzzyEquals(act:Double, exp:Double) {
-            val inrange = Math.abs(act - exp) <= 1e-2
-            if (inrange == false)
+            val inrange = abs(act - exp) <= 1e-2
+            if (!inrange)
             {
-                println("abs(actual - expected) must be <= 1e-2. Expected was " + exp + ", but got " + act)
+                println("abs(actual - expected) must be <= 1e-2. Expected was $exp, but got $act")
             }
             assertEquals(exp, act, 1e-2)
         }
